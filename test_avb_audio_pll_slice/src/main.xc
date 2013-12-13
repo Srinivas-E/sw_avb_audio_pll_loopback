@@ -52,6 +52,7 @@ on tile[0]: out port p_audio_shared = PORT_AUDIO_SHARED;
   }
 }
 
+/* Provide a stable clock with a frequency ~965hz */
 void provide_pll_clock(out buffered port:32 p_fs[])
 {
   int toggle = 0;
