@@ -12,10 +12,6 @@
 
 /* Number of input/output audio channels in the demo application */
 #define AVB_DEMO_NUM_CHANNELS 4
-/** The total number of media inputs (typically number of I2S input channels). */
-#define AVB_NUM_MEDIA_INPUTS AVB_DEMO_NUM_CHANNELS
-/** The total number of media outputs (typically the number of I2S output channels). */
-#define AVB_NUM_MEDIA_OUTPUTS AVB_DEMO_NUM_CHANNELS
 // This is the number of master clocks in a word clock
 #define MASTER_TO_WORDCLOCK_RATIO 512
 
@@ -84,14 +80,14 @@ int main(void)
   par
   {
     on tile[0]: provide_pll_clock(p_fs);
+
     on tile[AVB_I2C_TILE]: [[distribute]] audio_hardware_setup();
 
-    // AVB - Audio
     on tile[0]:
     {
       i2s_master(i2s_ports,
-                 p_aud_din, AVB_NUM_MEDIA_INPUTS,
-                 p_aud_dout, AVB_NUM_MEDIA_OUTPUTS,
+                 p_aud_din, AVB_DEMO_NUM_CHANNELS,
+                 p_aud_dout, AVB_DEMO_NUM_CHANNELS,
                  MASTER_TO_WORDCLOCK_RATIO,
                  0);
     }
