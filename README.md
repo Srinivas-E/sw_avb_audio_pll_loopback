@@ -16,5 +16,5 @@ Required software (dependencies)
 --------------------------------
 
   * module_i2c_simple (part of sc_i2c repo)
-  * module_avb_audio (provided as a part of this repo. This is a simplified version of module_avb_audio available in sc_avb_dc)
+  * module_avb_audio (provided as a part of this repo. This is a trimmed version of module_avb_audio available in sc_avb_dc)
 
